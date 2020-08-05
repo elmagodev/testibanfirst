@@ -1,0 +1,48 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ 'financial_movement.list.title'|trans }}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="flash-success">
+            {{ message|trans }}
+        </div>
+    {% endfor %}
+    <h1>{{ 'financial_movement.list.title'|trans }}</h1>
+    
+    {% block content %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'financial_movement.list.booking_date'|trans }}</th>
+                    <th scope="col">{{ 'financial_movement.list.wallet_id'|trans }}</th>
+                    <th scope="col">{{ 'financial_movement.list.value_date'|trans }}</th>
+                    <th scope="col">{{ 'financial_movement.list.amount'|trans }}</th>
+                    <th scope="col">{{ 'global.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for financial_movement in financial_movements %}
+                    <tr>
+                        <th scope="row">{{ financial_movement.id }}</th>
+                        <td>{{ financial_movement.bookingDate|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ financial_movement.walletId }}</td>
+                        <td>{{ financial_movement.valueDate|date('Y-m-d') }}</td>
+                        <td>
+                            {% if financial_movement.amount %}
+                                {{ financial_movement.amount.value }} {{ financial_movement.amount.currency }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href='{{ path('financial_movement_view', { 'id' : financial_movement.id }) }}' target='_blank'>{{ 'global.see_more'|trans}}</a> /
+                            <a href='{{ path('wallet_view', { 'id' : financial_movement.walletId }) }}' target='_blank'>{{ 'wallet.go_to'|trans}}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+    {% endblock %}
+{% endblock %}

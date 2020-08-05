@@ -1,0 +1,110 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ 'wallet.view.title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'wallet.view.title'|trans }}</h1>
+
+    {% block content %}
+        <div id='wallet_infos'>
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#globalInfos">
+                        {{ 'wallet.view.global_infos'|trans }}
+                    </a>
+                </div>
+                <div id="globalInfos" class="collapse show" data-parent="#wallet_infos">
+                    <div class="card-body">
+                        <div class='col-6'>
+                           {{ 'wallet.view.id'|trans }} : {{ wallet.id }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'wallet.view.tag'|trans }} : {{ wallet.tag }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'wallet.view.currency'|trans }} : {{ wallet.currency }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'wallet.view.status'|trans }} : {{ wallet.status }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'wallet.view.account_number'|trans }} : {{ wallet.accountNumber }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if wallet.correspondentBank %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#correspondentBank">
+                            {{ 'correspondent_bank.title'|trans }}
+                        </a>
+                    </div>
+                    <div id="correspondentBank" class="collapse" data-parent="#wallet_infos">
+                        <div class="card-body">
+                            <div class='col-6'>
+                            {{ 'correspondent_bank.bic'|trans }} : {{ wallet.correspondentBank.bic }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'correspondent_bank.name'|trans }} : {{ wallet.correspondentBank.name }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'correspondent_bank.address'|trans }} : {{ wallet.correspondentBank.address }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if wallet.holderBank %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#holderBank">
+                            {{ 'holder_bank.title'|trans }}
+                        </a>
+                    </div>
+                    <div id="holderBank" class="collapse" data-parent="#wallet_infos">
+                        <div class="card-body">
+                            <div class='col-6'>
+                            {{ 'holder_bank.bic'|trans }} : {{ wallet.holderBank.bic }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder_bank.name'|trans }} : {{ wallet.holderBank.name }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder_bank.address'|trans }} : {{ wallet.holderBank.address }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder_bank.clearing_code_type'|trans }} : {{ wallet.holderBank.clearingCodeType }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder_bank.clearing_code'|trans }} : {{ wallet.holderBank.clearingCode }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if wallet.holder %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#holder">
+                            {{ 'holder.title'|trans }}
+                        </a>
+                    </div>
+                    <div id="holder" class="collapse" data-parent="#wallet_infos">
+                        <div class="card-body">
+                            <div class='col-6'>
+                            {{ 'holder.name'|trans }} : {{ wallet.holder.name }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder.type'|trans }} : {{ wallet.holder.type }}
+                            </div>
+                            <div class='col-6'>
+                            {{ 'holder.address'|trans }} : {{ wallet.holder.address }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endblock %}

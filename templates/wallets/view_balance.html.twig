@@ -1,0 +1,44 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ 'wallet.view.title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'wallet.view.title'|trans }} - {{ wallet.id }}</h1>
+
+    {% block content %}
+        <div id='wallet_infos'>
+            {% if wallet.balance %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#balance-infos">
+                            {{ 'wallet.view.global_infos'|trans }}
+                        </a>
+                    </div>
+                    <div id="balance-infos" class="collapse show" data-parent="#wallet_infos">
+                        <div class="card-body">
+                            <div class='col-6'>
+                                {{ 'balance.closing_date'|trans }} : {{ wallet.balance.closingDate }}
+                            </div>
+                            <div class='col-6'>
+                                {{ 'wallet.list.booking_amount'|trans }} : 
+                                {% if wallet.balance.bookingAmount %}
+                                    {{ wallet.balance.bookingAmount.value }} {{ wallet.balance.bookingAmount.currency }}
+                                {% else %}
+                                -
+                                {% endif %}
+                            </div>
+                            <div class='col-6'>
+                                {{ 'wallet.list.value_amount'|trans }} : 
+                                {% if wallet.balance.valueAmount %}
+                                    {{ wallet.balance.valueAmount.value }} {{ wallet.balance.valueAmount.currency }}
+                                {% else %}
+                                -
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endblock %}

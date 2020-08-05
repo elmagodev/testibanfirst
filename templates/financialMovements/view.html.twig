@@ -1,0 +1,84 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ 'financial_movement.view.title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'financial_movement.view.title'|trans }}</h1>
+
+    {% block content %}
+        <div id='financial_movement_infos'>
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#globalInfos">
+                        {{ 'financial_movement.view.global_infos'|trans }}
+                    </a>
+                </div>
+                <div id="globalInfos" class="collapse show" data-parent="#financial_movement_infos">
+                    <div class="card-body">
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.id'|trans }} : {{ financial_movement.id }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.booking_date'|trans }} : {{ financial_movement.bookingDate|date('Y-m-d H:i:s') }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.value_date'|trans }} : {{ financial_movement.valueDate|date('Y-m-d') }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.ordering_account_number'|trans }} : {{ financial_movement.orderingAccountNumber }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.ordering_customer'|trans }} : {{ financial_movement.orderingCustomer }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.ordering_institution'|trans }} : {{ financial_movement.orderingInstitution }}
+                        </div>
+                        <div class='col-6'>
+                            {{ 'financial_movement.view.ordering_amount'|trans }} : 
+                            {% if financial_movement.orderingAmount %} 
+                                {{ financial_movement.orderingAmount.value }} {{ financial_movement.orderingAmount.currency }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.beneficiary_account_number'|trans }} : {{ financial_movement.beneficiaryAccountNumber }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.beneficiary_customer'|trans }} : {{ financial_movement.beneficiaryCustomer }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.beneficiary_institution'|trans }} : {{ financial_movement.beneficiaryInstitution }}
+                        </div>
+                        <div class='col-6'>
+                            {{ 'financial_movement.view.beneficiary_amount'|trans }} : 
+                            {% if financial_movement.beneficiaryAmount %} 
+                                {{ financial_movement.beneficiaryAmount.value }} {{ financial_movement.beneficiaryAmount.currency }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.remittance_information'|trans }} : {{ financial_movement.remittanceInformation }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.charges_details'|trans }} : {{ financial_movement.chargesDetails }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.exchange_rate'|trans }} : {{ financial_movement.exchangeRate }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.type_label'|trans }} : {{ financial_movement.typeLabel }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.internal_reference'|trans }} : {{ financial_movement.internalReference }}
+                        </div>
+                        <div class='col-6'>
+                           {{ 'financial_movement.view.description'|trans }} : {{ financial_movement.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

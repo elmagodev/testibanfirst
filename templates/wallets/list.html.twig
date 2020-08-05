@@ -1,0 +1,68 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ 'wallet.list.title'|trans }}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="flash-success">
+            {{ message|trans }}
+        </div>
+    {% endfor %}
+    <h1>{{ 'wallet.list.title'|trans }}</h1>
+    <div>
+        <a href='{{ path('wallet_list', {'sort' : 'DESC'}) }}'>Sort by creation date DESC</a>
+    </div>
+    <div>
+        <a href='{{ path('wallet_list', {'sort' : 'ASC'}) }}'>Sort by creation date ASC</a>
+    </div>
+    <div>
+        <a href='{{ path('wallet_list', {'page' : page}) }}'>Got to page {{ page }}</a>
+    </div>
+    <div>
+        <a href='{{ path('wallet_list', {'per_page' : per_page}) }}'>Nb of item per page {{ per_page }}</a>
+    </div>
+    <div>
+        <a href='{{ path('wallet_list') }}'>clear</a>
+    </div>
+    
+    {% block content %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'wallet.list.tag'|trans }}</th>
+                    <th scope="col">{{ 'wallet.list.currency'|trans }}</th>
+                    <th scope="col">{{ 'wallet.list.booking_amount'|trans }}</th>
+                    <th scope="col">{{ 'wallet.list.value_amount'|trans }}</th>
+                    <th scope="col">{{ 'wallet.list.date_last_financial_movement'|trans }}</th>
+                    <th scope="col">{{ 'global.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wallet in wallets %}
+                    <tr>
+                        <th scope="row">{{ wallet.id }}</th>
+                        <td>{{ wallet.tag }}</td>
+                        <td>{{ wallet.currency }}</td>
+                        <td>
+                            {% if wallet.bookingAmount %}
+                                {{ wallet.bookingAmount.value }} {{ wallet.bookingAmount.currency }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if wallet.valueAmount %}
+                                {{ wallet.valueAmount.value }} {{ wallet.valueAmount.currency }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td>{{ wallet.dateLastFinancialMovement|date('Y-m-d H:i:s') }}</td>
+                        <td><a href='{{ path('wallet_view', { 'id' : wallet.id }) }}' target='_blank'>{{ 'global.see_more'|trans}}</a>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+    {% endblock %}
+{% endblock %}

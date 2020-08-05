@@ -1,0 +1,43 @@
+correspondent_bank:
+  address: 'Adresse'
+  bic: 'Bic'
+  name: 'Nom'
+  title: 'Banque du correspondant'
+global:
+  actions: 'Actions'
+  see_more: 'Voir plus'
+  save: 'Sauvegarder'
+holder:
+  address: 'Adresse'
+  name: 'Nom'
+  title: 'Titulaire'
+  type:
+    label: 'Type'
+    individual: 'Individuel'
+    corporate: 'Corporate'
+holder_bank:
+  address: 'Adresse'
+  bic: 'Bic'
+  clearing_code: 'Code de suppression'
+  clearing_code_type: 'Type de code de suppression'
+  name: 'Nom'
+  title: 'Banque du titulaire'
+wallet:
+  create:
+    success: 'Portefeuille créé'
+  list:
+    booking_amount: 'Montant total de la réservation'
+    currency: 'Devise'
+    date_last_financial_movement: 'Date du dernier mouvement financier'
+    tag: 'Tag'
+    title: 'Liste des portefeuilles'
+    value_amount: 'Montant total de la valeur'
+    wallet_id: 'Identifiant de portefeuille'
+  view: 
+    account_number: 'Numéro de compte'
+    currency: 'Devise'
+    global_infos: 'Informations générales'
+    id: 'Identifiant de portefeuille'
+    status: 'Status'
+    tag: 'Tag'
+    title: 'Portefeuille'
