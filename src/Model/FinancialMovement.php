@@ -6,6 +6,9 @@ namespace App\Model;
 
 use DateTimeInterface;
 
+/**
+ * @author idetox <edouard.lescot@gmail.com>
+ */
 class FinancialMovement
 {
     /** @var null|string */

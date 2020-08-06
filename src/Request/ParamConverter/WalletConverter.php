@@ -11,6 +11,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInte
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @author idetox <edouard.lescot@gmail.com>
+ */
 class WalletConverter implements ParamConverterInterface
 {
     public function __construct(IbanFirstClient $ibanFirstClient, SerializerInterface $serializer)

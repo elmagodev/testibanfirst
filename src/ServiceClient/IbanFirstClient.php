@@ -9,6 +9,9 @@ use Exception;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @author idetox <edouard.lescot@gmail.com>
+ */
 class IbanFirstClient
 {
     private $client;

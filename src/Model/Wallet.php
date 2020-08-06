@@ -6,6 +6,9 @@ namespace App\Model;
 
 use DateTimeInterface;
 
+/**
+ * @author idetox <edouard.lescot@gmail.com>
+ */
 class Wallet
 {
     public const STATUS_AUTHORIZED='authorized';

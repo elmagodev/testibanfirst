@@ -14,6 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @author idetox <edouard.lescot@gmail.com>
+ */
 class CreateWallet extends AbstractController
 {
     private $ibanFirstClient;
